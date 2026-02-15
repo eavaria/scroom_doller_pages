@@ -16,8 +16,8 @@
       margin:0;
       overflow-x:auto;
       overflow-y:scroll;
-      -webkit-overflow-scrolling:touch;     /* smooth one-finger momentum scroll */
-      touch-action:pan-y pinch-zoom;         /* vertical pan + zoom */
+      -webkit-overflow-scrolling:touch;
+      touch-action:pan-y pinch-zoom;
     }
 
     body {
@@ -294,6 +294,33 @@
   document.addEventListener('touchstart', () => {
     document.querySelector('.zoom-hint').style.display = 'none';
   }, {once: true});
+
+  // Swipe detection script for horizontal column jump
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, false);
+
+  document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, false);
+
+  function handleSwipe() {
+    const swipeThreshold = 50; // pixels for swipe detection
+    const columnWidth = window.innerWidth * 0.5; // approximate column width
+
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Swipe left → move to right column
+      window.scrollBy({ left: columnWidth, behavior: 'smooth' });
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+      // Swipe right → move to left column
+      window.scrollBy({ left: -columnWidth, behavior: 'smooth' });
+    }
+  }
 </script>
 
 </body>
