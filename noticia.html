@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
   <title>ALERTA ROJA EN VICHUQUÉN – Incendio forestal consume más de 75 hectáreas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
@@ -13,21 +13,28 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      overflow-x: auto;                     /* Allow horizontal scroll if needed */
+      touch-action: pinch-zoom;             /* Encourage pinch-zoom on mobile */
+      -webkit-text-size-adjust: 100%;       /* Prevent iOS auto font scaling */
+    }
+
     body {
-      background-color: #f9f5e9; /* aged newsprint off-white */
+      background-color: #f9f5e9;
       color: #111;
       font-family: 'Libre Baskerville', Georgia, serif;
       line-height: 1.55;
+      min-width: 1000px;                    /* Force minimum width → zoom required on phones */
     }
 
     .newspaper {
+      min-width: 1000px;                    /* Core newspaper width – never smaller */
       max-width: 1100px;
       margin: 40px auto;
       background: white;
       padding: 50px 60px;
       border: 1px solid #888;
       box-shadow: 0 0 35px rgba(0,0,0,0.12);
-      min-width: 900px;
     }
 
     /* Masthead */
@@ -40,7 +47,7 @@
 
     .newspaper-title {
       font-family: 'Playfair Display', serif;
-      font-size: 6.2rem;
+      font-size: 5.8rem;                    /* Slightly smaller to fit better when zoomed */
       font-weight: 900;
       letter-spacing: -3px;
       line-height: 0.88;
@@ -62,10 +69,10 @@
       color: #222;
     }
 
-    /* Main headline */
+    /* Headline */
     .headline {
       font-family: 'Playfair Display', serif;
-      font-size: 3.6rem;
+      font-size: 3.4rem;
       font-weight: 900;
       line-height: 1.08;
       margin: 40px 0 25px;
@@ -102,7 +109,7 @@
       margin-right: auto;
     }
 
-    /* Two-column layout */
+    /* Always 2 columns – no collapse on mobile */
     .article-columns {
       column-count: 2;
       column-gap: 60px;
@@ -146,18 +153,18 @@
       font-size: 1.1rem;
     }
 
-    /* Fix lists: keep them inside their column */
+    /* Lists stay in column */
     .article-columns ul,
     .full-width-section ul {
       margin: 1.2em 0 1.8em 2em;
       font-size: 1.15rem;
-      column-span: none !important;      /* Prevent spanning across columns */
-      break-inside: avoid-column;        /* Avoid breaking list across columns */
-      orphans: 3;                        /* Better list flow */
+      column-span: none !important;
+      break-inside: avoid-column;
+      orphans: 3;
       widows: 3;
     }
 
-    /* Full-width recommendations section */
+    /* Full-width bottom section */
     .full-width-section {
       margin: 60px 0 0;
       font-size: 1.22rem;
@@ -193,30 +200,6 @@
     #share button:hover {
       transform: translate(3px, 3px);
       box-shadow: 2px 2px 0 #000;
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
-      .newspaper {
-        padding: 30px 25px;
-        margin: 20px;
-      }
-      .newspaper-title {
-        font-size: 4.4rem;
-      }
-      .headline {
-        font-size: 2.8rem;
-      }
-      .header-image {
-        max-height: 280px;
-        border-width: 8px;
-      }
-      .article-columns {
-        column-count: 1;
-      }
-      .article-columns, .full-width-section {
-        font-size: 1.15rem;
-      }
     }
   </style>
 </head>
@@ -266,7 +249,6 @@
     <p>Las condiciones meteorológicas –vientos moderados, baja humedad y vegetación seca– han favorecido la propagación rápida del frente de llamas, que avanza principalmente en dirección sureste.</p>
   </div>
 
-  <!-- Full-width section at the bottom -->
   <div class="full-width-section">
     <h2 class="subhead">Recomendaciones urgentes a la comunidad</h2>
     <p>Senapred y las autoridades locales reiteran las siguientes medidas preventivas:</p>
