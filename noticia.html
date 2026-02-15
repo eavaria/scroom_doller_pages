@@ -2,208 +2,206 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=5.0, user-scalable=yes"/>
   <title>ALERTA ROJA EN VICHUQUÉN – Incendio forestal consume más de 75 hectáreas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
     html, body {
-      overflow-x: auto;                     /* Allow horizontal scroll if needed */
-      touch-action: pinch-zoom;             /* Encourage pinch-zoom on mobile */
-      -webkit-text-size-adjust: 100%;       /* Prevent iOS auto font scaling */
+      overflow-x: auto;
+      touch-action: pinch-zoom pan-y;   /* allow vertical pan when zoomed */
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      background-color: #f9f5e9;
-      color: #111;
-      font-family: 'Libre Baskerville', Georgia, serif;
-      line-height: 1.55;
-      min-width: 1000px;                    /* Force minimum width → zoom required on phones */
+      background:#f9f5e9;
+      color:#111;
+      font-family:'Libre Baskerville',Georgia,serif;
+      line-height:1.55;
+      margin:0;
+      min-width:980px;                  /* slightly smaller than before */
     }
 
     .newspaper {
-      min-width: 1000px;                    /* Core newspaper width – never smaller */
-      max-width: 1100px;
-      margin: 40px auto;
-      background: white;
-      padding: 50px 60px;
-      border: 1px solid #888;
-      box-shadow: 0 0 35px rgba(0,0,0,0.12);
+      min-width:980px;
+      max-width:1100px;
+      margin:30px auto;
+      background:white;
+      padding:40px 50px;
+      border:1px solid #888;
+      box-shadow:0 0 30px rgba(0,0,0,0.15);
+    }
+
+    /* Zoom hint – only on small screens */
+    .zoom-hint {
+      display:none;
+      background:#000;
+      color:#fff;
+      text-align:center;
+      padding:12px;
+      font-size:1rem;
+      position:sticky;
+      top:0;
+      z-index:10;
+    }
+
+    @media (max-width:1000px) {
+      .zoom-hint { display:block; }
     }
 
     /* Masthead */
     .masthead {
-      text-align: center;
-      margin-bottom: 40px;
-      border-bottom: 10px double #000;
-      padding-bottom: 25px;
+      text-align:center;
+      margin-bottom:35px;
+      border-bottom:8px double #000;
+      padding-bottom:20px;
     }
 
     .newspaper-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 5.8rem;                    /* Slightly smaller to fit better when zoomed */
-      font-weight: 900;
-      letter-spacing: -3px;
-      line-height: 0.88;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-      color: #000;
+      font-family:'Playfair Display',serif;
+      font-size:5.4rem;
+      font-weight:900;
+      letter-spacing:-3px;
+      line-height:0.88;
+      text-transform:uppercase;
+      margin-bottom:8px;
+      color:#000;
     }
 
-    .edition {
-      font-size: 1.2rem;
-      font-style: italic;
-      color: #444;
-      margin: 12px 0;
-    }
+    .edition  { font-size:1.15rem; font-style:italic; color:#444; margin:10px 0; }
+    .date     { font-size:1.2rem;  letter-spacing:1.1px; color:#222; }
 
-    .date {
-      font-size: 1.25rem;
-      letter-spacing: 1.2px;
-      color: #222;
-    }
-
-    /* Headline */
     .headline {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.4rem;
-      font-weight: 900;
-      line-height: 1.08;
-      margin: 40px 0 25px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: -0.8px;
+      font-family:'Playfair Display',serif;
+      font-size:3.2rem;
+      font-weight:900;
+      line-height:1.08;
+      margin:30px 0 20px;
+      text-align:center;
+      text-transform:uppercase;
+      letter-spacing:-0.7px;
     }
 
-    /* Header image */
     .header-image-container {
-      margin: 30px 0 45px;
-      text-align: center;
+      margin:25px 0 40px;
+      text-align:center;
     }
 
     .header-image {
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-      max-height: 380px;
-      object-fit: cover;
-      border: 10px solid #000;
-      box-shadow: 6px 6px 0 #111;
-      filter: grayscale(80%) contrast(105%) sepia(10%);
-      image-rendering: crisp-edges;
+      width:100%;
+      height:auto;
+      max-height:360px;
+      object-fit:cover;
+      border:8px solid #000;
+      box-shadow:5px 5px 0 #111;
+      filter:grayscale(80%) contrast(105%) sepia(10%);
     }
 
     .image-caption {
-      font-size: 0.98rem;
-      font-style: italic;
-      color: #444;
-      margin-top: 14px;
-      max-width: 85%;
-      margin-left: auto;
-      margin-right: auto;
+      font-size:0.95rem;
+      font-style:italic;
+      color:#444;
+      margin-top:12px;
+      max-width:90%;
+      margin-left:auto;
+      margin-right:auto;
     }
 
-    /* Always 2 columns – no collapse on mobile */
     .article-columns {
-      column-count: 2;
-      column-gap: 60px;
-      margin: 30px 0;
-      font-size: 1.22rem;
+      column-count:2;
+      column-gap:50px;
+      margin:25px 0;
+      font-size:1.18rem;
     }
 
     .article-columns p {
-      margin-bottom: 1.6em;
-      text-align: justify;
-      hyphens: auto;
+      margin-bottom:1.5em;
+      text-align:justify;
+      hyphens:auto;
     }
 
     .dropcap {
-      float: left;
-      font-size: 5rem;
-      line-height: 0.82;
-      font-weight: bold;
-      margin: 0 16px 8px 0;
-      font-family: 'Playfair Display', serif;
-      color: #000;
+      float:left;
+      font-size:4.6rem;
+      line-height:0.82;
+      font-weight:bold;
+      margin:0 14px 6px 0;
+      font-family:'Playfair Display',serif;
+      color:#000;
     }
 
     .subhead {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.1rem;
-      font-weight: 700;
-      margin: 50px 0 25px;
-      color: #111;
-      break-after: avoid-column;
-      break-inside: avoid-column;
-      border-bottom: 3px solid #000;
-      padding-bottom: 10px;
+      font-family:'Playfair Display',serif;
+      font-size:1.95rem;
+      font-weight:700;
+      margin:40px 0 20px;
+      color:#111;
+      break-after:avoid-column;
+      break-inside:avoid-column;
+      border-bottom:3px solid #000;
+      padding-bottom:8px;
     }
 
     .byline {
-      font-style: italic;
-      color: #555;
-      margin: 20px 0 40px;
-      text-align: center;
-      font-size: 1.1rem;
+      font-style:italic;
+      color:#555;
+      margin:20px 0 35px;
+      text-align:center;
+      font-size:1.05rem;
     }
 
-    /* Lists stay in column */
     .article-columns ul,
     .full-width-section ul {
-      margin: 1.2em 0 1.8em 2em;
-      font-size: 1.15rem;
-      column-span: none !important;
-      break-inside: avoid-column;
-      orphans: 3;
-      widows: 3;
+      margin:1em 0 1.6em 2em;
+      font-size:1.12rem;
+      column-span:none !important;
+      break-inside:avoid-column;
     }
 
-    /* Full-width bottom section */
     .full-width-section {
-      margin: 60px 0 0;
-      font-size: 1.22rem;
+      margin:50px 0 0;
+      font-size:1.18rem;
     }
 
     .full-width-section p {
-      margin-bottom: 1.6em;
-      text-align: justify;
-      hyphens: auto;
+      margin-bottom:1.5em;
+      text-align:justify;
     }
 
-    /* Share button */
     #share {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 100;
+      position:fixed;
+      bottom:20px;
+      right:20px;
+      z-index:100;
     }
 
     #share button {
-      background: #000;
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      font-size: 1.15rem;
-      cursor: pointer;
-      border-radius: 0;
-      font-family: 'Libre Baskerville', serif;
-      box-shadow: 5px 5px 0 #000;
-      transition: all 0.18s;
+      background:#000;
+      color:white;
+      border:none;
+      padding:16px 32px;
+      font-size:1.1rem;
+      cursor:pointer;
+      border-radius:0;
+      font-family:'Libre Baskerville',serif;
+      box-shadow:4px 4px 0 #000;
+      min-width:140px;
+      min-height:54px; /* larger touch target */
     }
 
     #share button:hover {
-      transform: translate(3px, 3px);
-      box-shadow: 2px 2px 0 #000;
+      transform:translate(2px,2px);
+      box-shadow:2px 2px 0 #000;
     }
   </style>
 </head>
 <body>
+
+<div class="zoom-hint">
+  Pellizca con dos dedos para acercar y leer cómodamente las columnas
+</div>
 
 <div class="newspaper">
 
@@ -263,7 +261,7 @@
 
     <p>El incendio permanece en fase de combate activo. Senapred mantiene la Alerta Roja vigente mientras persista riesgo para la población, viviendas e infraestructura crítica. Nuevos reportes se entregarán durante el día a través de canales oficiales.</p>
 
-    <p style="margin-top: 3em; font-style: italic; color: #555; text-align: center;">
+    <p style="margin-top:3em; font-style:italic; color:#555; text-align:center;">
       Esta publicación es una síntesis informativa basada en datos públicos de Senapred, Conaf y reportes de prensa al 15 de febrero de 2026. Manténgase informado por fuentes oficiales.
     </p>
   </div>
@@ -280,11 +278,11 @@
     const text = 'Evacuación en Quebrada Culenmapu. Fuego avanza cerca del lago. Reporte completo aquí.';
     const url = window.location.href;
     if (navigator.share) {
-      navigator.share({ title, text, url })
+      navigator.share({title, text, url})
         .catch(err => console.log('Error al compartir:', err));
     } else {
       navigator.clipboard.writeText(`${title}\n${text}\n${url}`)
-        .then(() => alert('Enlace y texto copiados al portapapeles'))
+        .then(() => alert('Enlace y texto copiados'))
         .catch(() => alert('Copia manual:\n' + url));
     }
   }
