@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=0.85, maximum-scale=5.0, user-scalable=yes"/>
+  <meta name="viewport" content="width=device-width, initial-scale=0.92, maximum-scale=5.0, user-scalable=yes"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <title>ALERTA ROJA EN VICHUQUÉN – Incendio forestal consume más de 75 hectáreas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
@@ -10,18 +12,20 @@
     * { margin:0; padding:0; box-sizing:border-box; }
 
     html, body {
-      overflow-x: auto;
-      touch-action: pinch-zoom pan-y;   /* allow vertical pan when zoomed */
-      -webkit-text-size-adjust: 100%;
+      height:100%;
+      margin:0;
+      overflow-x:auto;
+      overflow-y:scroll;
+      -webkit-overflow-scrolling:touch;     /* smooth one-finger momentum scroll */
+      touch-action:pan-y pinch-zoom;         /* vertical pan + zoom */
     }
 
     body {
       background:#f9f5e9;
       color:#111;
       font-family:'Libre Baskerville',Georgia,serif;
-      line-height:1.55;
-      margin:0;
-      min-width:980px;                  /* slightly smaller than before */
+      line-height:1.58;
+      min-width:980px;
     }
 
     .newspaper {
@@ -29,26 +33,29 @@
       max-width:1100px;
       margin:30px auto;
       background:white;
-      padding:40px 50px;
+      padding:45px 55px 100px;
       border:1px solid #888;
       box-shadow:0 0 30px rgba(0,0,0,0.15);
     }
 
-    /* Zoom hint – only on small screens */
+    /* Zoom hint banner – only on small screens */
     .zoom-hint {
-      display:none;
-      background:#000;
-      color:#fff;
-      text-align:center;
-      padding:12px;
-      font-size:1rem;
       position:sticky;
       top:0;
-      z-index:10;
+      left:0;
+      right:0;
+      background:rgba(0,0,0,0.88);
+      color:#fff;
+      text-align:center;
+      padding:14px 20px;
+      font-size:1.05rem;
+      z-index:9999;
+      display:none;
     }
 
     @media (max-width:1000px) {
       .zoom-hint { display:block; }
+      .newspaper { padding:35px 40px 120px; }
     }
 
     /* Masthead */
@@ -61,7 +68,7 @@
 
     .newspaper-title {
       font-family:'Playfair Display',serif;
-      font-size:5.4rem;
+      font-size:5.6rem;
       font-weight:900;
       letter-spacing:-3px;
       line-height:0.88;
@@ -70,15 +77,15 @@
       color:#000;
     }
 
-    .edition  { font-size:1.15rem; font-style:italic; color:#444; margin:10px 0; }
-    .date     { font-size:1.2rem;  letter-spacing:1.1px; color:#222; }
+    .edition { font-size:1.15rem; font-style:italic; color:#444; margin:10px 0; }
+    .date { font-size:1.2rem; letter-spacing:1.1px; color:#222; }
 
     .headline {
       font-family:'Playfair Display',serif;
-      font-size:3.2rem;
+      font-size:3.3rem;
       font-weight:900;
       line-height:1.08;
-      margin:30px 0 20px;
+      margin:35px 0 22px;
       text-align:center;
       text-transform:uppercase;
       letter-spacing:-0.7px;
@@ -124,19 +131,19 @@
 
     .dropcap {
       float:left;
-      font-size:4.6rem;
+      font-size:4.8rem;
       line-height:0.82;
       font-weight:bold;
-      margin:0 14px 6px 0;
+      margin:0 15px 8px 0;
       font-family:'Playfair Display',serif;
       color:#000;
     }
 
     .subhead {
       font-family:'Playfair Display',serif;
-      font-size:1.95rem;
+      font-size:2rem;
       font-weight:700;
-      margin:40px 0 20px;
+      margin:45px 0 22px;
       color:#111;
       break-after:avoid-column;
       break-inside:avoid-column;
@@ -149,12 +156,12 @@
       color:#555;
       margin:20px 0 35px;
       text-align:center;
-      font-size:1.05rem;
+      font-size:1.08rem;
     }
 
     .article-columns ul,
     .full-width-section ul {
-      margin:1em 0 1.6em 2em;
+      margin:1.1em 0 1.6em 2em;
       font-size:1.12rem;
       column-span:none !important;
       break-inside:avoid-column;
@@ -184,11 +191,9 @@
       padding:16px 32px;
       font-size:1.1rem;
       cursor:pointer;
-      border-radius:0;
-      font-family:'Libre Baskerville',serif;
-      box-shadow:4px 4px 0 #000;
       min-width:140px;
-      min-height:54px; /* larger touch target */
+      min-height:52px;
+      box-shadow:4px 4px 0 #000;
     }
 
     #share button:hover {
@@ -200,11 +205,10 @@
 <body>
 
 <div class="zoom-hint">
-  Pellizca con dos dedos para acercar y leer cómodamente las columnas
+  Usa un dedo para mover la página y dos dedos para pellizcar y acercar las columnas
 </div>
 
 <div class="newspaper">
-
   <div class="masthead">
     <div class="newspaper-title">EL NOTICIERO</div>
     <div class="edition">Edición Digital – Emergencias Región del Maule</div>
@@ -265,7 +269,6 @@
       Esta publicación es una síntesis informativa basada en datos públicos de Senapred, Conaf y reportes de prensa al 15 de febrero de 2026. Manténgase informado por fuentes oficiales.
     </p>
   </div>
-
 </div>
 
 <div id="share">
@@ -282,10 +285,15 @@
         .catch(err => console.log('Error al compartir:', err));
     } else {
       navigator.clipboard.writeText(`${title}\n${text}\n${url}`)
-        .then(() => alert('Enlace y texto copiados'))
+        .then(() => alert('Copiado al portapapeles'))
         .catch(() => alert('Copia manual:\n' + url));
     }
   }
+
+  // Auto-hide zoom hint after first interaction
+  document.addEventListener('touchstart', () => {
+    document.querySelector('.zoom-hint').style.display = 'none';
+  }, {once: true});
 </script>
 
 </body>
