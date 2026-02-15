@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"/>
+  <!-- This forces desktop rendering on all devices -->
+  <meta name="viewport" content="width=1100">
   <title>ALERTA ROJA EN VICHUQUÉN – Incendio forestal consume más de 75 hectáreas</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
@@ -12,9 +13,9 @@
     html, body {
       height:100%;
       margin:0;
-      overflow-x:hidden;
-      -webkit-overflow-scrolling:touch;      /* smooth one-finger momentum scroll */
-      touch-action:manipulation pinch-zoom;   /* vertical scroll + pinch zoom */
+      overflow-x:auto;
+      overflow-y:scroll;
+      -webkit-overflow-scrolling:touch;     /* smooth momentum on iOS */
     }
 
     body {
@@ -29,28 +30,27 @@
       max-width:1100px;
       margin:0 auto;
       background:white;
-      padding:40px 5vw 80px;               /* responsive side padding */
+      padding:40px 5vw 80px; /* responsive side padding, but never too narrow */
       border:1px solid #888;
       box-shadow:0 0 30px rgba(0,0,0,0.15);
       min-height:100vh;
     }
 
-    /* Sticky zoom hint on narrow screens */
+    /* Zoom hint – shown on narrow viewports */
     .zoom-hint {
       position:sticky;
       top:0;
       background:rgba(0,0,0,0.88);
       color:#fff;
       text-align:center;
-      padding:12px 15px;
-      font-size:1rem;
-      z-index:999;
+      padding:14px 20px;
+      font-size:1.05rem;
+      z-index:9999;
       display:none;
     }
 
-    @media (max-width:900px) {
+    @media (max-width:1100px) {
       .zoom-hint { display:block; }
-      .newspaper { padding:30px 4vw 100px; }
     }
 
     /* Masthead */
@@ -63,7 +63,7 @@
 
     .newspaper-title {
       font-family:'Playfair Display',serif;
-      font-size:clamp(3.8rem, 12vw, 5.6rem);
+      font-size:clamp(4rem, 10vw, 5.6rem);
       font-weight:900;
       letter-spacing:-3px;
       line-height:0.88;
@@ -77,10 +77,10 @@
 
     .headline {
       font-family:'Playfair Display',serif;
-      font-size:clamp(2.4rem, 8vw, 3.4rem);
+      font-size:clamp(2.6rem, 7vw, 3.4rem);
       font-weight:900;
       line-height:1.08;
-      margin:30px 0 22px;
+      margin:35px 0 22px;
       text-align:center;
       text-transform:uppercase;
       letter-spacing:-0.7px;
@@ -94,7 +94,7 @@
     .header-image {
       width:100%;
       height:auto;
-      max-height:clamp(260px, 45vh, 360px);
+      max-height:clamp(280px, 45vh, 360px);
       object-fit:cover;
       border:8px solid #000;
       box-shadow:5px 5px 0 #111;
@@ -111,7 +111,6 @@
       margin-right:auto;
     }
 
-    /* Always 2 columns – no collapse */
     .article-columns {
       column-count:2;
       column-gap:clamp(30px, 5vw, 50px);
@@ -201,11 +200,10 @@
 <body>
 
 <div class="zoom-hint">
-  Pellizca con dos dedos para acercar y leer cómodamente las columnas
+  Pellizca con dos dedos para acercar y leer las columnas cómodamente
 </div>
 
 <div class="newspaper">
-
   <div class="masthead">
     <div class="newspaper-title">EL NOTICIERO</div>
     <div class="edition">Edición Digital – Emergencias Región del Maule</div>
@@ -266,7 +264,6 @@
       Esta publicación es una síntesis informativa basada en datos públicos de Senapred, Conaf y reportes de prensa al 15 de febrero de 2026. Manténgase informado por fuentes oficiales.
     </p>
   </div>
-
 </div>
 
 <div id="share">
