@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ALERTA ROJA EN VICHUQUÉN – Incendio forestal consume más de 75 hectáreas</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;900&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f9f5e9; /* aged newsprint off-white */
+      color: #111;
+      font-family: 'Libre Baskerville', Georgia, serif;
+      line-height: 1.55;
+    }
+
+    .newspaper {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: white;
+      padding: 50px 60px;
+      border: 1px solid #888;
+      box-shadow: 0 0 35px rgba(0,0,0,0.12);
+    }
+
+    /* Masthead */
+    .masthead {
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 10px double #000;
+      padding-bottom: 25px;
+    }
+
+    .newspaper-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 6.2rem;
+      font-weight: 900;
+      letter-spacing: -3px;
+      line-height: 0.88;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: #000;
+    }
+
+    .edition {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #444;
+      margin: 12px 0;
+    }
+
+    .date {
+      font-size: 1.25rem;
+      letter-spacing: 1.2px;
+      color: #222;
+    }
+
+    /* Main headline */
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.6rem;
+      font-weight: 900;
+      line-height: 1.08;
+      margin: 40px 0 25px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: -0.8px;
+    }
+
+    /* Header image */
+    .header-image-container {
+      margin: 30px 0 45px;
+      text-align: center;
+    }
+
+    .header-image {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: cover;
+      border: 10px solid #000;
+      box-shadow: 6px 6px 0 #111;
+      filter: grayscale(80%) contrast(105%) sepia(10%);
+      image-rendering: crisp-edges;
+    }
+
+    .image-caption {
+      font-size: 0.98rem;
+      font-style: italic;
+      color: #444;
+      margin-top: 14px;
+      max-width: 85%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Two-column layout */
+    .article-columns {
+      column-count: 2;
+      column-gap: 60px;
+      margin: 30px 0;
+      font-size: 1.22rem;
+    }
+
+    .article-columns p {
+      margin-bottom: 1.6em;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    .dropcap {
+      float: left;
+      font-size: 5rem;
+      line-height: 0.82;
+      font-weight: bold;
+      margin: 0 16px 8px 0;
+      font-family: 'Playfair Display', serif;
+      color: #000;
+    }
+
+    .subhead {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin: 50px 0 25px;
+      color: #111;
+      break-after: avoid-column;
+      break-inside: avoid-column;
+      border-bottom: 3px solid #000;
+      padding-bottom: 10px;
+    }
+
+    .byline {
+      font-style: italic;
+      color: #555;
+      margin: 20px 0 40px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    /* Fix lists: keep them inside their column */
+    .article-columns ul,
+    .full-width-section ul {
+      margin: 1.2em 0 1.8em 2em;
+      font-size: 1.15rem;
+      column-span: none !important;      /* Prevent spanning across columns */
+      break-inside: avoid-column;        /* Avoid breaking list across columns */
+      orphans: 3;                        /* Better list flow */
+      widows: 3;
+    }
+
+    /* Full-width recommendations section */
+    .full-width-section {
+      margin: 60px 0 0;
+      font-size: 1.22rem;
+    }
+
+    .full-width-section p {
+      margin-bottom: 1.6em;
+      text-align: justify;
+      hyphens: auto;
+    }
+
+    /* Share button */
+    #share {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 100;
+    }
+
+    #share button {
+      background: #000;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      font-size: 1.15rem;
+      cursor: pointer;
+      border-radius: 0;
+      font-family: 'Libre Baskerville', serif;
+      box-shadow: 5px 5px 0 #000;
+      transition: all 0.18s;
+    }
+
+    #share button:hover {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .newspaper {
+        padding: 30px 25px;
+        margin: 20px;
+      }
+      .newspaper-title {
+        font-size: 4.4rem;
+      }
+      .headline {
+        font-size: 2.8rem;
+      }
+      .header-image {
+        max-height: 280px;
+        border-width: 8px;
+      }
+      .article-columns {
+        column-count: 1;
+      }
+      .article-columns, .full-width-section {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="newspaper">
+
+  <div class="masthead">
+    <div class="newspaper-title">EL NOTICIERO</div>
+    <div class="edition">Edición Digital – Emergencias Región del Maule</div>
+    <div class="date">15 de febrero de 2026</div>
+  </div>
+
+  <h1 class="headline">ALERTA ROJA EN VICHUQUÉN<br>Incendio forestal consume más de 75 hectáreas y amenaza zonas habitadas</h1>
+
+  <div class="header-image-container">
+    <img src="noticia.jpg" alt="Ilustración artística del incendio forestal en Vichuquén" class="header-image">
+    <div class="image-caption">Representación artística del incendio Alto Llico rodeando el lago y bosques cercanos a Vichuquén – Ilustración derivada para fines informativos</div>
+  </div>
+
+  <div class="byline">Por Equipo de Emergencias | Actualizado: 15 feb 2026 – 04:30 hrs | Fuentes: Senapred, Conaf, BioBioChile</div>
+
+  <div class="article-columns">
+    <p><span class="dropcap">E</span>l Servicio Nacional de Prevención y Respuesta ante Desastres (Senapred) decretó Alerta Roja en la comuna de Vichuquén, región del Maule, debido a un incendio forestal denominado <strong>Alto Llico</strong> que ya ha consumido más de 75 hectáreas (con reportes posteriores indicando avance hasta 200 hectáreas) y se aproxima peligrosamente a zonas habitadas.</p>
+
+    <p>El siniestro se desarrolla en sectores de alta pendiente boscosa cercanos al lago Vichuquén, lo que genera condiciones complejas para el control del fuego y aumenta el riesgo para viviendas dispersas y plantaciones forestales en la interfaz urbano-rural.</p>
+
+    <h2 class="subhead">Evacuación preventiva en Quebrada Culenmapu</h2>
+    <p>Mediante el sistema de Alerta SAE, Senapred activó la evacuación preventiva del sector <strong>Quebrada Culenmapu</strong>. Las autoridades han enfatizado la necesidad de actuar con calma, seguir las rutas indicadas por personal de emergencia y no regresar hasta que se levante la alerta oficial.</p>
+
+    <p>Carabineros, Bomberos y equipos de Senapred coordinan el traslado de familias hacia albergues temporales en la comuna y localidades cercanas. Hasta el momento se reportan al menos tres viviendas afectadas por el avance del fuego en este sector.</p>
+
+    <h2 class="subhead">Despliegue de recursos para combatir el incendio</h2>
+    <p>Según el último reporte de la Corporación Nacional Forestal (Conaf), el combate del incendio cuenta con un amplio contingente:</p>
+    <ul>
+      <li>Bomberos de Vichuquén y comunas aledañas</li>
+      <li>Carabineros de Chile</li>
+      <li>Seis brigadas forestales de Conaf</li>
+      <li>Un técnico especializado en manejo del fuego</li>
+      <li>Dos maquinarias pesadas (buldócer)</li>
+      <li>Dos camiones cisterna</li>
+      <li>Dos helicópteros bombarderos</li>
+      <li>Un avión de coordinación</li>
+      <li>Dos aviones tanqueros</li>
+    </ul>
+
+    <p>Las condiciones meteorológicas –vientos moderados, baja humedad y vegetación seca– han favorecido la propagación rápida del frente de llamas, que avanza principalmente en dirección sureste.</p>
+  </div>
+
+  <!-- Full-width section at the bottom -->
+  <div class="full-width-section">
+    <h2 class="subhead">Recomendaciones urgentes a la comunidad</h2>
+    <p>Senapred y las autoridades locales reiteran las siguientes medidas preventivas:</p>
+    <ul>
+      <li>Evitar transitar por caminos o sectores cercanos al perímetro del incendio</li>
+      <li>Cerrar puertas, ventanas y rejillas si hay presencia de humo denso</li>
+      <li>Preparar un bolso de emergencia con documentos importantes, agua, medicamentos y elementos de abrigo</li>
+      <li>Seguir estrictamente las instrucciones de personal de emergencia, Bomberos y Carabineros</li>
+      <li>Reportar cualquier nuevo foco o situación de riesgo inmediatamente al fono 133 (Bomberos) o 132 (Carabineros)</li>
+      <li>No difundir información no verificada que pueda generar confusión o pánico</li>
+    </ul>
+
+    <p>El incendio permanece en fase de combate activo. Senapred mantiene la Alerta Roja vigente mientras persista riesgo para la población, viviendas e infraestructura crítica. Nuevos reportes se entregarán durante el día a través de canales oficiales.</p>
+
+    <p style="margin-top: 3em; font-style: italic; color: #555; text-align: center;">
+      Esta publicación es una síntesis informativa basada en datos públicos de Senapred, Conaf y reportes de prensa al 15 de febrero de 2026. Manténgase informado por fuentes oficiales.
+    </p>
+  </div>
+
+</div>
+
+<div id="share">
+  <button onclick="shareArticle()">Compartir esta noticia</button>
+</div>
+
+<script>
+  function shareArticle() {
+    const title = 'ALERTA ROJA EN VICHUQUÉN – Incendio forestal +75 ha';
+    const text = 'Evacuación en Quebrada Culenmapu. Fuego avanza cerca del lago. Reporte completo aquí.';
+    const url = window.location.href;
+    if (navigator.share) {
+      navigator.share({ title, text, url })
+        .catch(err => console.log('Error al compartir:', err));
+    } else {
+      navigator.clipboard.writeText(`${title}\n${text}\n${url}`)
+        .then(() => alert('Enlace y texto copiados al portapapeles'))
+        .catch(() => alert('Copia manual:\n' + url));
+    }
+  }
+</script>
+
+</body>
+</html>
